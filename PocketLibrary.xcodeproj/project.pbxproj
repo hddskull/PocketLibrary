@@ -16,6 +16,8 @@
 		DFD1E7F126C5321900AAAADC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F026C5321900AAAADC /* LoginController.swift */; };
 		DFD1E7F326C5327200AAAADC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F226C5327200AAAADC /* LoginView.swift */; };
 		DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */; };
+		DFD1E7F726C6B8F000AAAADC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F626C6B8F000AAAADC /* Models.swift */; };
+		DFD1E7F926C6BE0900AAAADC /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F826C6BE0900AAAADC /* RegistrationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DFD1E7F026C5321900AAAADC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		DFD1E7F226C5327200AAAADC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		DFD1E7F626C6B8F000AAAADC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DFD1E7F826C6BE0900AAAADC /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +84,12 @@
 				DFD1E7E026C5207700AAAADC /* ViewController.swift */,
 				DFD1E7F026C5321900AAAADC /* LoginController.swift */,
 				DFD1E7F226C5327200AAAADC /* LoginView.swift */,
+				DFD1E7F826C6BE0900AAAADC /* RegistrationController.swift */,
 				DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */,
 				DFD1E7E526C5207A00AAAADC /* Assets.xcassets */,
 				DFD1E7E726C5207A00AAAADC /* LaunchScreen.storyboard */,
 				DFD1E7EA26C5207A00AAAADC /* Info.plist */,
+				DFD1E7F626C6B8F000AAAADC /* Models.swift */,
 			);
 			path = PocketLibrary;
 			sourceTree = "<group>";
@@ -216,6 +222,8 @@
 				DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */,
 				DFD1E7F326C5327200AAAADC /* LoginView.swift in Sources */,
 				DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */,
+				DFD1E7F926C6BE0900AAAADC /* RegistrationController.swift in Sources */,
+				DFD1E7F726C6B8F000AAAADC /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 class LoginController: UIViewController {
     
     let loginView = LoginView()
-    let regview = RegistrationView()
+    let currentUser = User("", "", "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,19 @@ class LoginController: UIViewController {
     
     
     func setView(_ CView: UIView) {
-//        loginView.makeConstraints(CView)
-        regview.makeConstraints(CView)
+        loginView.makeConstraints(CView)
+        loginView.regBtnLV.addTarget(self, action: #selector(openRegistration), for: .touchUpInside)
 
     }
     
+    //MARK: funcs for validating user
+    func getUser(_ LoginView: LoginView) -> User {
+        let login = LoginView.loginTFLV.text!
+        let password = LoginView.pwdTFLV.text!
+        return User("", login, password)
+    }
     
+    @objc func openRegistration(sender: UIButton){
+        self.navigationController?.pushViewController(RegistrationController(), animated: true)
+    }
 }
