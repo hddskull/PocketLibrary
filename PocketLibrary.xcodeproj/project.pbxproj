@@ -15,6 +15,7 @@
 		DFD1E7E926C5207A00AAAADC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD1E7E726C5207A00AAAADC /* LaunchScreen.storyboard */; };
 		DFD1E7F126C5321900AAAADC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F026C5321900AAAADC /* LoginController.swift */; };
 		DFD1E7F326C5327200AAAADC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F226C5327200AAAADC /* LoginView.swift */; };
+		DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DFD1E7EA26C5207A00AAAADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD1E7F026C5321900AAAADC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		DFD1E7F226C5327200AAAADC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				DFD1E7E026C5207700AAAADC /* ViewController.swift */,
 				DFD1E7F026C5321900AAAADC /* LoginController.swift */,
 				DFD1E7F226C5327200AAAADC /* LoginView.swift */,
+				DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */,
 				DFD1E7E526C5207A00AAAADC /* Assets.xcassets */,
 				DFD1E7E726C5207A00AAAADC /* LaunchScreen.storyboard */,
 				DFD1E7EA26C5207A00AAAADC /* Info.plist */,
@@ -210,6 +213,7 @@
 				DFD1E7E126C5207700AAAADC /* ViewController.swift in Sources */,
 				DFD1E7F126C5321900AAAADC /* LoginController.swift in Sources */,
 				DFD1E7DD26C5207700AAAADC /* AppDelegate.swift in Sources */,
+				DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */,
 				DFD1E7F326C5327200AAAADC /* LoginView.swift in Sources */,
 				DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */,
 			);

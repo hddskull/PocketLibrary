@@ -8,6 +8,9 @@
 import UIKit
 
 class LoginController: UIViewController {
+    
+    let loginView = LoginView()
+    let regview = RegistrationView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,10 @@ class LoginController: UIViewController {
     
     
     func setView(_ CView: UIView) {
-        let view = LoginView()
-        view.makeConstraints(CView)
+//        loginView.makeConstraints(CView)
+        regview.makeConstraints(CView)
+
     }
+    
+    
 }
