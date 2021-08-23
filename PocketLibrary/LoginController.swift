@@ -7,10 +7,11 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, NewUserProtocol {
     
     let loginView = LoginView()
     let currentUser = User("", "", "")
+    var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +20,17 @@ class LoginController: UIViewController {
     }
     
     
-    
+    // MARK: setView
     func setView(_ CView: UIView) {
         loginView.makeConstraints(CView)
         loginView.regBtnLV.addTarget(self, action: #selector(openRegistration), for: .touchUpInside)
 
+    }
+    
+    @objc func openRegistration(sender: UIButton){
+        let regC = RegistrationController()
+        regC.delegate = self
+        self.navigationController?.pushViewController(regC, animated: true)
     }
     
     //MARK: funcs for validating user
@@ -33,7 +40,10 @@ class LoginController: UIViewController {
         return User("", login, password)
     }
     
-    @objc func openRegistration(sender: UIButton){
-        self.navigationController?.pushViewController(RegistrationController(), animated: true)
+    //MARK: protocol implemetation
+    
+    func addNewUser(_ user: User) {
+        users.append(user)
+        print(users)
     }
 }

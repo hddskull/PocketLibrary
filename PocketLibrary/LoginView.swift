@@ -40,6 +40,7 @@ class LoginView: UIView {
         }
         
         pwdTFLV.isSecureTextEntry = true
+        pwdTFLV.textContentType = .oneTimeCode
         pwdTFLV.backgroundColor = .white
         pwdTFLV.textAlignment = .left
         pwdTFLV.textColor = .black
