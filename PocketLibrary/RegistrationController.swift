@@ -30,6 +30,7 @@ class RegistrationController: UIViewController {
         if fieldsNotEmpty() {
             let user = User(self.regview.nameRV.text!, self.regview.loginTFRV.text!, self.regview.pwdTFRV.text!)
             self.delegate?.addNewUser(user)
+            self.navigationController?.popViewController(animated: true)
         } else {
             showError()
         }
