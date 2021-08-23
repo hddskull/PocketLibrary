@@ -9,32 +9,17 @@ import UIKit
 
 class RegistrationView: UIView {
 
-    let nameRV = UITextField()
     let loginTFRV = UITextField()
     let pwdTFRV = UITextField()
     let regBtnRV = UIButton()
 
     func makeConstraints(_ CView: UIView) {
-        CView.addSubview(nameRV)
+        
         CView.addSubview(loginTFRV)
         CView.addSubview(pwdTFRV)
         CView.addSubview(regBtnRV)
 
         CView.backgroundColor = .systemBlue
-        
-        nameRV.backgroundColor = .white
-        nameRV.textAlignment = .left
-        nameRV.textColor = .black
-        nameRV.placeholder = "Name"
-        nameRV.layer.cornerRadius = 5
-        
-        nameRV.snp.makeConstraints { make in
-            make.leading.equalTo(CView.layoutMarginsGuide).offset(20)
-            make.trailing.equalTo(CView.layoutMarginsGuide).inset(20)
-            make.height.equalTo(40)
-            make.centerX.equalTo(CView)
-            make.top.equalTo(CView.snp.top).offset(2*CView.frame.size.height/5)
-        }
         
         loginTFRV.backgroundColor = .white
         loginTFRV.textAlignment = .left
@@ -47,7 +32,7 @@ class RegistrationView: UIView {
             make.trailing.equalTo(CView.layoutMarginsGuide).inset(20)
             make.height.equalTo(40)
             make.centerX.equalTo(CView)
-            make.top.equalTo(nameRV.snp.bottom).offset(20)
+            make.top.equalTo(CView.snp.top).offset(2*CView.frame.size.height/5)
         }
         
         pwdTFRV.backgroundColor = .white

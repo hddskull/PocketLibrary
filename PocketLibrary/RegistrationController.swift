@@ -28,15 +28,15 @@ class RegistrationController: UIViewController {
     //MARK: funcs for registration button
     @objc func register(sender: UIButton) {
         if fieldsNotEmpty() {
-            let user = User(self.regview.nameRV.text!, self.regview.loginTFRV.text!, self.regview.pwdTFRV.text!)
+            let user = User(self.regview.loginTFRV.text!, self.regview.pwdTFRV.text!)
             self.delegate?.addNewUser(user)
             self.navigationController?.popViewController(animated: true)
         } else {
-            showError()
+            showErrorRegistration()
         }
     }
 
-    func showError() {
+    func showErrorRegistration() {
         let alert = UIAlertController(title: "Error", message: "Please fill out all the fields", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
@@ -44,7 +44,7 @@ class RegistrationController: UIViewController {
     }
     
     func fieldsNotEmpty() -> Bool{
-        if self.regview.nameRV.text?.isEmpty == false && self.regview.loginTFRV.text?.isEmpty == false && self.regview.pwdTFRV.text?.isEmpty == false {
+        if self.regview.loginTFRV.text?.isEmpty == false && self.regview.pwdTFRV.text?.isEmpty == false {
             return true
         } else {
             return false

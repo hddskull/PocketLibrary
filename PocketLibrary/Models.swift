@@ -8,12 +8,10 @@
 import Foundation
 
 class User {
-    var name = ""
     var login = ""
     var password = ""
     
-    init(_ name: String, _ login: String, _ password: String){
-        self.name = name
+    init(_ login: String, _ password: String){
         self.login = login
         self.password = password
     }
