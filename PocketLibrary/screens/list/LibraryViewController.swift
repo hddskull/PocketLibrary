@@ -10,14 +10,16 @@ import UIKit
 class LibraryViewController: UITableViewController {
     
     //MARK: Properties
-    var books: [Book] = [Book(name: "peepee", author: "auht", isbn: "123", description: "cool book", bookCover: "some cover"),
-    Book(name: "Финансист", author: "Теодор Драйзер", isbn: "978-5-699-36993-5", description: "Герой романа Финансист - Фрэнк Каупервуд - не только удачливый бизнесмен и владелец огромного состояния. Он обладает особым магнетизмом, сверхъестественной властью как над мужчинами, так и над женщинами. Богатство для него не цель, а средство, позволяющее Каупервуду жить, руководствуясь принципом: Мои желания прежде всего", bookCover: "обложка")]
+    var books: [Book] = [
+        Book(name: "peepee", author: "auht", isbn: "123", description: "cool book", bookCover: "some cover"),
+        Book(name: "Финансист", author: "Теодор Драйзер", isbn: "978-5-699-36993-5", description: "Герой романа Финансист - Фрэнк Каупервуд - не только удачливый бизнесмен и владелец огромного состояния. Он обладает особым магнетизмом, сверхъестественной властью как над мужчинами, так и над женщинами. Богатство для него не цель, а средство, позволяющее Каупервуду жить, руководствуясь принципом: Мои желания прежде всего", bookCover: "обложка")]
 
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemTeal
         self.tableView.register(LibraryViewCell.self, forCellReuseIdentifier: "libraryCell")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Добавить книгу", style: .plain, target: self, action: #selector(addBookAction))
     }
 
     // MARK: - Table view data source
@@ -48,5 +50,13 @@ class LibraryViewController: UITableViewController {
         //cell.bookCover.image = book.bookCover
         return cell
     }
+    
+    //MARK: barItem func
+    
+    @objc func addBookAction(sender: UIBarButtonItem) {
+        let addBookVC = AddBookViewController()
+        self.navigationController?.pushViewController(addBookVC, animated: true)
+    }
 
+    
 }

@@ -10,6 +10,8 @@
 		22AF722DFAE10C1AE2047943 /* Pods_PocketLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B156CB37ED9D4EF23C41DA8 /* Pods_PocketLibrary.framework */; };
 		BB84A95B26F2926500A7E461 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A95A26F2926500A7E461 /* LibraryViewController.swift */; };
 		BB84A95D26F2941500A7E461 /* LibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */; };
+		BB84A96026F3D6D600A7E461 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A95F26F3D6D600A7E461 /* AddBookViewController.swift */; };
+		BB84A96226F3D81300A7E461 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A96126F3D81300A7E461 /* AddBookView.swift */; };
 		DF00D56226D3CE29006CF435 /* NewUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF00D56126D3CE29006CF435 /* NewUserProtocol.swift */; };
 		DFD1E7DD26C5207700AAAADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7DC26C5207700AAAADC /* AppDelegate.swift */; };
 		DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7DE26C5207700AAAADC /* SceneDelegate.swift */; };
@@ -29,6 +31,8 @@
 		6169E1E6C5FB625EADD6F3AD /* Pods-PocketLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLibrary.release.xcconfig"; path = "Target Support Files/Pods-PocketLibrary/Pods-PocketLibrary.release.xcconfig"; sourceTree = "<group>"; };
 		BB84A95A26F2926500A7E461 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewCell.swift; sourceTree = "<group>"; };
+		BB84A95F26F3D6D600A7E461 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		BB84A96126F3D81300A7E461 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		DF00D56126D3CE29006CF435 /* NewUserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserProtocol.swift; sourceTree = "<group>"; };
 		DFD1E7D926C5207700AAAADC /* PocketLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD1E7DC26C5207700AAAADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			children = (
 				BB84A95926F2922F00A7E461 /* list */,
 				BB84A95726F291A200A7E461 /* login */,
+				BB84A95E26F3D66F00A7E461 /* add book */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -99,6 +104,15 @@
 				BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */,
 			);
 			path = list;
+			sourceTree = "<group>";
+		};
+		BB84A95E26F3D66F00A7E461 /* add book */ = {
+			isa = PBXGroup;
+			children = (
+				BB84A95F26F3D6D600A7E461 /* AddBookViewController.swift */,
+				BB84A96126F3D81300A7E461 /* AddBookView.swift */,
+			);
+			path = "add book";
 			sourceTree = "<group>";
 		};
 		DFD1E7D026C5207700AAAADC = {
@@ -258,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD1E7E126C5207700AAAADC /* ViewController.swift in Sources */,
+				BB84A96026F3D6D600A7E461 /* AddBookViewController.swift in Sources */,
 				DFD1E7F126C5321900AAAADC /* LoginController.swift in Sources */,
 				DFD1E7DD26C5207700AAAADC /* AppDelegate.swift in Sources */,
 				DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */,
@@ -265,6 +280,7 @@
 				BB84A95D26F2941500A7E461 /* LibraryViewCell.swift in Sources */,
 				DF00D56226D3CE29006CF435 /* NewUserProtocol.swift in Sources */,
 				BB84A95B26F2926500A7E461 /* LibraryViewController.swift in Sources */,
+				BB84A96226F3D81300A7E461 /* AddBookView.swift in Sources */,
 				DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */,
 				DFD1E7F926C6BE0900AAAADC /* RegistrationController.swift in Sources */,
 				DFD1E7F726C6B8F000AAAADC /* Models.swift in Sources */,
