@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		22AF722DFAE10C1AE2047943 /* Pods_PocketLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B156CB37ED9D4EF23C41DA8 /* Pods_PocketLibrary.framework */; };
+		BB84A95B26F2926500A7E461 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A95A26F2926500A7E461 /* LibraryViewController.swift */; };
+		BB84A95D26F2941500A7E461 /* LibraryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */; };
 		DF00D56226D3CE29006CF435 /* NewUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF00D56126D3CE29006CF435 /* NewUserProtocol.swift */; };
 		DFD1E7DD26C5207700AAAADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7DC26C5207700AAAADC /* AppDelegate.swift */; };
 		DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD1E7DE26C5207700AAAADC /* SceneDelegate.swift */; };
@@ -25,6 +27,8 @@
 		1B156CB37ED9D4EF23C41DA8 /* Pods_PocketLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CC83EC6DEB525983F9633F /* Pods-PocketLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLibrary.debug.xcconfig"; path = "Target Support Files/Pods-PocketLibrary/Pods-PocketLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 		6169E1E6C5FB625EADD6F3AD /* Pods-PocketLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLibrary.release.xcconfig"; path = "Target Support Files/Pods-PocketLibrary/Pods-PocketLibrary.release.xcconfig"; sourceTree = "<group>"; };
+		BB84A95A26F2926500A7E461 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewCell.swift; sourceTree = "<group>"; };
 		DF00D56126D3CE29006CF435 /* NewUserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserProtocol.swift; sourceTree = "<group>"; };
 		DFD1E7D926C5207700AAAADC /* PocketLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD1E7DC26C5207700AAAADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB84A95626F2919700A7E461 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				BB84A95926F2922F00A7E461 /* list */,
+				BB84A95726F291A200A7E461 /* login */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		BB84A95726F291A200A7E461 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				DFD1E7F026C5321900AAAADC /* LoginController.swift */,
+				DFD1E7F226C5327200AAAADC /* LoginView.swift */,
+				DFD1E7F826C6BE0900AAAADC /* RegistrationController.swift */,
+				DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		BB84A95826F291D800A7E461 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				DFD1E7F626C6B8F000AAAADC /* Models.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BB84A95926F2922F00A7E461 /* list */ = {
+			isa = PBXGroup;
+			children = (
+				BB84A95A26F2926500A7E461 /* LibraryViewController.swift */,
+				BB84A95C26F2941500A7E461 /* LibraryViewCell.swift */,
+			);
+			path = list;
+			sourceTree = "<group>";
+		};
 		DFD1E7D026C5207700AAAADC = {
 			isa = PBXGroup;
 			children = (
@@ -81,17 +122,14 @@
 		DFD1E7DB26C5207700AAAADC /* PocketLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				BB84A95826F291D800A7E461 /* models */,
+				BB84A95626F2919700A7E461 /* screens */,
 				DFD1E7DC26C5207700AAAADC /* AppDelegate.swift */,
 				DFD1E7DE26C5207700AAAADC /* SceneDelegate.swift */,
 				DFD1E7E026C5207700AAAADC /* ViewController.swift */,
-				DFD1E7F026C5321900AAAADC /* LoginController.swift */,
-				DFD1E7F226C5327200AAAADC /* LoginView.swift */,
-				DFD1E7F826C6BE0900AAAADC /* RegistrationController.swift */,
-				DFD1E7F426C6B2DC00AAAADC /* RegistrationView.swift */,
 				DFD1E7E526C5207A00AAAADC /* Assets.xcassets */,
 				DFD1E7E726C5207A00AAAADC /* LaunchScreen.storyboard */,
 				DFD1E7EA26C5207A00AAAADC /* Info.plist */,
-				DFD1E7F626C6B8F000AAAADC /* Models.swift */,
 				DF00D56126D3CE29006CF435 /* NewUserProtocol.swift */,
 			);
 			path = PocketLibrary;
@@ -224,7 +262,9 @@
 				DFD1E7DD26C5207700AAAADC /* AppDelegate.swift in Sources */,
 				DFD1E7F526C6B2DC00AAAADC /* RegistrationView.swift in Sources */,
 				DFD1E7F326C5327200AAAADC /* LoginView.swift in Sources */,
+				BB84A95D26F2941500A7E461 /* LibraryViewCell.swift in Sources */,
 				DF00D56226D3CE29006CF435 /* NewUserProtocol.swift in Sources */,
+				BB84A95B26F2926500A7E461 /* LibraryViewController.swift in Sources */,
 				DFD1E7DF26C5207700AAAADC /* SceneDelegate.swift in Sources */,
 				DFD1E7F926C6BE0900AAAADC /* RegistrationController.swift in Sources */,
 				DFD1E7F726C6B8F000AAAADC /* Models.swift in Sources */,
