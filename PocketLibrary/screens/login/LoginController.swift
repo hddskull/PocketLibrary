@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import RealmSwift
 
-class LoginController: UIViewController, NewUserProtocol {
+class LoginController: UIViewController {
     
     let loginView = LoginView()
-    var currentUser = User("", "")
-    var users = [User]()
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setView(self.view)
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
     }
     
     
@@ -34,8 +36,13 @@ class LoginController: UIViewController, NewUserProtocol {
         let login = self.loginView.loginTFLV.text!
         let password = self.loginView.pwdTFLV.text!
         
-        if validateUser(login, password) {
-            //OpenTableViewController
+        if login == "Admin" && password == "Admin"{
+            self.navigationController?.pushViewController(AdminViewController(), animated: true)
+        }
+        else if validateUser(login, password) {
+            let lvc = LibraryViewController()
+            lvc.user = login
+            self.navigationController?.pushViewController(lvc, animated: true)
         } else {
             showErrorLogin()
         }
@@ -46,25 +53,23 @@ class LoginController: UIViewController, NewUserProtocol {
     //MARK: funcs for validating user
     
     func validateUser(_ login: String, _ password: String) -> Bool{
-        var foundUser: User?
-        
+        let users = realm.objects(User.self)
         for user in users {
-            if login == user.login && password == user.password {
-                foundUser = user
-            }
+            if user.login == login && user.password == password {
+                return true }
+//        if users.filter("login == \(login)") != nil {
+//            let usersWithLogin = users.filter("login == \(login)")
+//            if usersWithLogin[0].login == login && usersWithLogin[0].password == password {
+//            return true
+//            }
+//        }
         }
-        
-        if let user = foundUser {
-            self.currentUser = user
-            return true
-        } else {
-            return false
-        }
+        return false
     }
     
     func showErrorLogin() {
-        let alert = UIAlertController(title: "Error", message: "Such user not found", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "Ошибка", message: "Такой пользователь не найден", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Хорошо", style: .cancel, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
@@ -73,13 +78,11 @@ class LoginController: UIViewController, NewUserProtocol {
     
     @objc func openRegistration(sender: UIButton){
         let regC = RegistrationController()
-        regC.delegate = self
         self.navigationController?.pushViewController(regC, animated: true)
     }
     
-    //MARK: protocol implemetation
-    
-    func addNewUser(_ user: User) {
-        users.append(user)
+    //MARK: release keboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

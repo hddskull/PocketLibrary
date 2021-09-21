@@ -78,11 +78,13 @@ class LibraryViewCell: UITableViewCell {
 
 
     func setupConstraints(){
-        
+        self.contentView.backgroundColor = .systemTeal
         let vertSV = UIStackView(arrangedSubviews: [nameLabel, authorLabel, isbnLabel])
         vertSV.axis = .vertical
+//        vertSV.backgroundColor = .systemTeal
         let horizSV = UIStackView(arrangedSubviews: [vertSV, bookCover])
         horizSV.axis = .horizontal
+//        horizSV.backgroundColor = .systemTeal
         
         self.contentView.addSubview(horizSV)
         horizSV.snp.makeConstraints(){ make in

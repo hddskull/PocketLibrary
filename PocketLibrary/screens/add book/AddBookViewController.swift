@@ -11,10 +11,12 @@ class AddBookViewController: UIViewController {
     
     //MARK:properties
     var editingBook = false
+    var user: String?
     let addBookView = AddBookView()
     var bookDelegate: BookCreationProtocol?
     var indexPathRow: Int?
     var imageName: String?
+    var oldBook: Book?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ class AddBookViewController: UIViewController {
         addBookView.setupConstraints(vc: self.view)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveBookAction))
         self.addBookView.pickerBtn.addTarget(self, action: #selector(chooseImage), for: .touchUpInside)
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     
@@ -31,12 +37,12 @@ class AddBookViewController: UIViewController {
     @objc func saveBookAction(sender: UIBarButtonItem) {
         if self.editingBook {
             validateFields()
-            let cBook = createBookObj()
+            let editedBook = createBookObj()
             guard let delegate = bookDelegate, let indexPR = indexPathRow else {
                 print("bookDelegate error")
                 return
             }
-            delegate.updateBook(cBook, indexPR)
+            delegate.updateBook(newBook: editedBook, oldBook: self.oldBook!)
             navigationController?.popViewController(animated: true)
         } else {
             validateFields()
@@ -64,11 +70,9 @@ class AddBookViewController: UIViewController {
         if self.addBookView.descField.text?.isEmpty == true || self.addBookView.descField.text == "Введите краткое описание" {
             sendAlert(with: "Заполните краткое описание книги")
         }
-        //create here a book object and send it with delegate protocl property
     }
     
     func sendAlert(with text: String){
-        //make here an alert and ok cancel-type btn
         let alertFields = UIAlertController(title: "Ошибка заполнения", message: text, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Хорошо", style: .cancel, handler: nil)
         alertFields.addAction(ok)
@@ -80,8 +84,10 @@ class AddBookViewController: UIViewController {
         let author = self.addBookView.authorField.text!
         let isbn = self.addBookView.isbnField.text!
         let description = self.addBookView.descField.text!
-        let bookCover = self.imageName!
-        let book = Book(name: name, author: author, isbn: isbn, description: description, bookCover: bookCover)
+        let user = self.user!
+        guard let bookCover = self.imageName else { return Book(user: user ,name: name, author: author, isbn: isbn, bookDesc: description, bookCover: "")
+        }
+        let book = Book(user: user ,name: name, author: author, isbn: isbn, bookDesc: description, bookCover: bookCover)
         return book
     }
     
@@ -90,6 +96,11 @@ class AddBookViewController: UIViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    //MARK: release keboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }

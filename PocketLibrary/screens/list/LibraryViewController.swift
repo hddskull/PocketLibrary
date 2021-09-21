@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LibraryViewController: UITableViewController {
     
     //MARK: Properties
-    var books: [Book] = [
-        Book(name: "peepee", author: "auht", isbn: "123", description: "cool book", bookCover: "some cover"),
-        Book(name: "Финансист", author: "Теодор Драйзер", isbn: "978-5-699-36993-5", description: "Герой романа Финансист - Фрэнк Каупервуд - не только удачливый бизнесмен и владелец огромного состояния. Он обладает особым магнетизмом, сверхъестественной властью как над мужчинами, так и над женщинами. Богатство для него не цель, а средство, позволяющее Каупервуду жить, руководствуясь принципом: Мои желания прежде всего", bookCover: "обложка")]
+    var user: String?
+    let dataBase = DBManager()
+    
+    
+    
 
     //MARK: Life cycle
     override func viewDidLoad() {
@@ -29,25 +32,25 @@ class LibraryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        return dataBase.arrayOfBooks(user: self.user!).count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "libraryCell", for: indexPath) as! LibraryViewCell
-        cell = configureCellData(book: books[indexPath.row], cell: cell)
+        cell = configureCellData(book: dataBase.arrayOfBooks(user: self.user!)[indexPath.row], cell: cell)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dvc = DetailedViewController()
-        //заполнить поля dvc
-        let book = books[indexPath.row]
+        let book = dataBase.arrayOfBooks(user: self.user!)[indexPath.row]
+        if book.bookCover == "" { dvc.dbv.bookCover.image = #imageLiteral(resourceName: "425bookimg") }
         dvc.dbv.bookCover.image = loadImg(fileName: book.bookCover)
         dvc.dbv.nameLabel.text = book.name
         dvc.dbv.authorLabel.text = book.author
         dvc.dbv.isbnLabel.text = book.isbn
-        dvc.dbv.descLabel.text = book.description
+        dvc.dbv.descLabel.text = book.bookDesc
 
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -70,26 +73,24 @@ class LibraryViewController: UITableViewController {
         let addBookVC = AddBookViewController()
         addBookVC.bookDelegate = self
         addBookVC.editingBook = false
+        addBookVC.user = self.user
         self.navigationController?.pushViewController(addBookVC, animated: true)
     }
 
     
 }
 
+//MARK: DB funcs
+
 extension LibraryViewController: BookCreationProtocol {
     func createNewBook(_ book: Book) {
-        //db here
-        books.append(book)
+        dataBase.saveNewBook(book: book)
         tableView.reloadData()
     }
     
-    func updateBook(_ book: Book, _ indexPathRow: Int) {
-        print("upd")
-        books.remove(at: indexPathRow)
-        books.append(book)
+    func updateBook(newBook: Book, oldBook: Book) {
+        dataBase.updateBook(newBook: newBook, oldBook: oldBook)
         tableView.reloadData()
-        //db here
-        //get from db by book.name
     }
     
     
@@ -109,11 +110,14 @@ extension LibraryViewController {
     }
     
     func editHandeler(indexPathRow: Int){
-        let book = books[indexPathRow]
+        let book = dataBase.arrayOfBooks(user: self.user!)[indexPathRow]
+        
         let addBookVC = AddBookViewController()
+        addBookVC.user = self.user
         addBookVC.bookDelegate = self
         addBookVC.editingBook = true
         addBookVC.indexPathRow = indexPathRow
+        addBookVC.oldBook = book
         addBookVC.addBookView.authorField.text = book.author
         addBookVC.addBookView.nameField.text = book.name
         addBookVC.addBookView.isbnField.text = book.isbn
@@ -132,7 +136,8 @@ extension LibraryViewController {
     }
     
     func deleteHandler(indexPathRow: Int){
-        books.remove(at: indexPathRow)
+        let book = dataBase.arrayOfBooks(user: self.user!)[indexPathRow]
+        dataBase.deleteTask(book: book)
         tableView.reloadData()
     }
 
@@ -154,3 +159,5 @@ extension LibraryViewController {
         return nil
     }
 }
+
+

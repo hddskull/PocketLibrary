@@ -6,31 +6,35 @@
 //
 
 import Foundation
+import RealmSwift
 
-class User {
-    var login = ""
-    var password = ""
-    var books: [Book] = []
+class User: Object {
+    @objc dynamic var login = ""
+    @objc dynamic var password = ""
     
-    init(_ login: String, _ password: String){
+    convenience init(login: String, password: String) {
+        self.init()
         self.login = login
         self.password = password
     }
 }
 
 
-class Book {
-    var name = ""
-    var author = ""
-    var isbn = ""
-    var description = ""
-    var bookCover = "" // look up how to store images in the file system and keeping the path is the models property in the DB
+class Book: Object {
+    @objc dynamic var user = ""
+    @objc dynamic var name = ""
+    @objc dynamic var author = ""
+    @objc dynamic var isbn = ""
+    @objc dynamic var bookDesc = ""
+    @objc dynamic var bookCover = ""
     
-    init(name: String, author: String, isbn: String, description: String, bookCover: String) {
+    convenience init(user: String, name: String, author: String, isbn: String, bookDesc: String, bookCover: String) {
+        self.init()
+        self.user = user
         self.name = name
         self.author = author
         self.isbn = isbn
-        self.description = description
+        self.bookDesc = bookDesc
         self.bookCover = bookCover
     }
 }
