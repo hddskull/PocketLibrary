@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol BookCreationProtocol {
+    func createNewBook(_ book: Book)
+    func updateBook(_ book: Book, _ indexPathRow: Int)
+}

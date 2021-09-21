@@ -8,11 +8,14 @@
 import UIKit
 
 class DetailedViewController: UIViewController {
-
+    //MARK: properties
+    let dbv = DetailedBookView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .systemTeal
+        view.addSubview(dbv)
+        dbv.setupConstraints(self.view)
     }
     
 

@@ -22,10 +22,9 @@ class LibraryViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Добавить книгу", style: .plain, target: self, action: #selector(addBookAction))
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view configuration
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -40,6 +39,19 @@ class LibraryViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dvc = DetailedViewController()
+        //заполнить поля dvc
+        let book = books[indexPath.row]
+        dvc.dbv.bookCover.image = loadImg(fileName: book.bookCover)
+        dvc.dbv.nameLabel.text = book.name
+        dvc.dbv.authorLabel.text = book.author
+        dvc.dbv.isbnLabel.text = book.isbn
+        dvc.dbv.descLabel.text = book.description
+
+        self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
     //MARK: func
     
     func configureCellData(book: Book, cell: LibraryViewCell) -> LibraryViewCell {
@@ -47,16 +59,98 @@ class LibraryViewController: UITableViewController {
         cell.authorLabel.text = book.author
         cell.isbnLabel.text = book.isbn
         cell.descriptionLabel.text = book.description
-        //cell.bookCover.image = book.bookCover
+        let image = loadImg(fileName: book.bookCover)
+        cell.bookCover.image = image
         return cell
     }
     
-    //MARK: barItem func
+    //MARK: add book barItemBtn action
     
     @objc func addBookAction(sender: UIBarButtonItem) {
         let addBookVC = AddBookViewController()
+        addBookVC.bookDelegate = self
+        addBookVC.editingBook = false
         self.navigationController?.pushViewController(addBookVC, animated: true)
     }
 
     
+}
+
+extension LibraryViewController: BookCreationProtocol {
+    func createNewBook(_ book: Book) {
+        //db here
+        books.append(book)
+        tableView.reloadData()
+    }
+    
+    func updateBook(_ book: Book, _ indexPathRow: Int) {
+        print("upd")
+        books.remove(at: indexPathRow)
+        books.append(book)
+        tableView.reloadData()
+        //db here
+        //get from db by book.name
+    }
+    
+    
+}
+
+//MARK: swipe actions extension
+
+extension LibraryViewController {
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Изменить") {
+            (action, view, completionHandler) in self.editHandeler(indexPathRow: indexPath.row)
+            completionHandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func editHandeler(indexPathRow: Int){
+        let book = books[indexPathRow]
+        let addBookVC = AddBookViewController()
+        addBookVC.bookDelegate = self
+        addBookVC.editingBook = true
+        addBookVC.indexPathRow = indexPathRow
+        addBookVC.addBookView.authorField.text = book.author
+        addBookVC.addBookView.nameField.text = book.name
+        addBookVC.addBookView.isbnField.text = book.isbn
+        addBookVC.addBookView.descField.text = book.description
+        
+        self.navigationController?.pushViewController(addBookVC, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Удалить") {
+            (action, view, completionHandler) in self.deleteHandler(indexPathRow: indexPath.row)
+            completionHandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func deleteHandler(indexPathRow: Int){
+        books.remove(at: indexPathRow)
+        tableView.reloadData()
+    }
+
+}
+
+extension LibraryViewController {
+    var documentsUrl: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+    
+    private func loadImg(fileName: String) -> UIImage? {
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error)")
+        }
+        return nil
+    }
 }

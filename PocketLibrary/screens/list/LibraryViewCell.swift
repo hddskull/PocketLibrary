@@ -72,6 +72,7 @@ class LibraryViewCell: UITableViewCell {
         img.image = #imageLiteral(resourceName: "425bookimg")
         img.layer.masksToBounds = true
         img.layer.cornerRadius = 5
+        img.contentMode = .scaleToFill
         return img
     }()
 
@@ -82,7 +83,6 @@ class LibraryViewCell: UITableViewCell {
         vertSV.axis = .vertical
         let horizSV = UIStackView(arrangedSubviews: [vertSV, bookCover])
         horizSV.axis = .horizontal
-        horizSV.distribution = .fillProportionally
         
         self.contentView.addSubview(horizSV)
         horizSV.snp.makeConstraints(){ make in
@@ -92,7 +92,7 @@ class LibraryViewCell: UITableViewCell {
         
         bookCover.snp.makeConstraints(){ make in
             make.height.equalTo(120)
-            make.width.equalTo(100)
+            make.width.equalTo(120)
         }
         
         nameLabel.snp.makeConstraints(){ make in

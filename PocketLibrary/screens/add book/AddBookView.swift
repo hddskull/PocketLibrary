@@ -46,6 +46,15 @@ class AddBookView: UIScrollView {
         return lbl
     }()
     
+    let pickerBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Выберите обложку для книги", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.layer.cornerRadius = 5
+        btn.backgroundColor = .white
+        return btn
+    }()
+    
     let nameField: UITextField = {
         let txt = UITextField()
         txt.placeholder = "Введите название книги"
@@ -65,11 +74,10 @@ class AddBookView: UIScrollView {
         let txt = UITextView()
         txt.text = "Введите краткое описание"
         txt.textColor = UIColor.lightGray
+        txt.backgroundColor = .clear
         return txt
     }()
-    
-    //imagepicker here
-    
+        
     //MARK: setup constraints
     
     func setupConstraints(vc: UIView) {
@@ -80,7 +88,8 @@ class AddBookView: UIScrollView {
         let stackView = UIStackView(arrangedSubviews: [nameLabel,   nameField,
                                                        authorLabel, authorField,
                                                        isbnLabel,   isbnField,
-                                                       descLabel,   descField])
+                                                       descLabel,   descField,
+                                                       pickerBtn])
         stackView.axis = .vertical
         self.addSubview(stackView)
         stackView.snp.makeConstraints(){ make in
@@ -98,6 +107,10 @@ class AddBookView: UIScrollView {
         authorField.snp.makeConstraints({make in make.height.equalTo(50)})
         isbnField.snp.makeConstraints({make in make.height.equalTo(50)})
         descField.snp.makeConstraints({make in make.height.equalTo(150)})
+        pickerBtn.snp.makeConstraints() { make in
+            make.height.equalTo(60)
+            make.width.equalTo(100)
+        }
 
     }
 
